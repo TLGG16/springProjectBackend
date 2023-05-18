@@ -24,12 +24,43 @@ public class AdvertController {
     CarService carService;
 
     @PostMapping("/advert/create")
-    public HttpStatus AdvertCreate(@RequestBody Advert advert){
+    public HttpStatus advertCreate(@RequestBody Advert advert){
         System.out.println("Созданно объявление");
         advertService.createAdvert(advert);
         return HttpStatus.ACCEPTED;
-
     }
+
+
+    @GetMapping("/advertmenu")
+    public ResponseEntity<List<Advert>> advertGet(){
+        System.out.println("Получен get запрос для advert " + LocalDateTime.now());
+        return new ResponseEntity<>( advertService.getAllAdverts(), HttpStatus.OK);
+    }
+    @GetMapping("/advert/{id}")
+    public ResponseEntity<Advert> advertGetById(@PathVariable Integer id){
+        System.out.println("Получен get запрос для advert " + LocalDateTime.now());
+        return new ResponseEntity<>( advertService.getAdvertById(id).get(), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/advertdelete/{id}")
+    public HttpStatus advertDelete(@PathVariable Integer id){
+        System.out.println("Получен delete запрос для advert для id "+ id);
+        advertService.deleteAdvertById(id);
+        return HttpStatus.OK;
+    }
+    @GetMapping("/advertupdate/{id}")
+    public ResponseEntity<Advert> advertUpdateGet(@PathVariable Integer id){
+        System.out.println("Получен get запрос для advert с id " +id);
+        return new ResponseEntity<>( advertService.getAdvertById(id).get(), HttpStatus.OK);
+    }
+    @PostMapping("/advertupdate/{id}")
+    public HttpStatus advertUpdatePut(@RequestBody Advert advert, @PathVariable Integer id){
+        System.out.println("Получен post запрос для advert с id" +id);
+        advert.setAdvert_id(id);
+        advertService.updateAdvert(advert);
+        return HttpStatus.ACCEPTED;
+    }
+
 
 
 }

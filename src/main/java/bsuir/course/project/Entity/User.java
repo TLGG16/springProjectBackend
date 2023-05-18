@@ -27,7 +27,10 @@ public class User {
     private Set<Favourite> favourite_list;
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private Set<DiscussionComment> discussion_comment_set;
-
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private Set<DialogMes> dialog_mes_list;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private Set<Dialog> dialog_list;
     
 
     public void setUser_id(Integer user_id) {

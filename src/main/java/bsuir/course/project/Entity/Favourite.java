@@ -15,8 +15,8 @@ public class Favourite {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "car_id")
-    private Car car;
+    @JoinColumn(name = "advert_id")
+    private Advert advert;
 
 
 
@@ -36,11 +36,11 @@ public class Favourite {
         this.user = user;
     }
 
-    public Car getCar() {
-        return car;
+    public Advert getAdvert() {
+        return advert;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setAdvert(Advert advert) {
+        this.advert = advert;
     }
 }

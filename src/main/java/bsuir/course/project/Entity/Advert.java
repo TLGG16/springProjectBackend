@@ -16,6 +16,7 @@ public class Advert {
     private Double price;
     private String photo_url;
     private String description;
+    private String city;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -24,8 +25,10 @@ public class Advert {
     private Car car;
     @OneToMany(mappedBy = "advert",cascade = CascadeType.ALL)
     private Set<Comment> comment_list;
-
-
+    @OneToMany(mappedBy = "advert",cascade = CascadeType.ALL)
+    private Set<Favourite> favourite_list;
+    @OneToMany(mappedBy = "advert", cascade = CascadeType.ALL)
+    private Set<Dialog> dialog_list;
 
 
     public Integer getAdvert_id() {

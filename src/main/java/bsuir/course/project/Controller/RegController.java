@@ -1,5 +1,6 @@
 package bsuir.course.project.Controller;
 
+import bsuir.course.project.Entity.Person;
 import bsuir.course.project.Entity.User;
 import bsuir.course.project.Interfaces.PersonService;
 import bsuir.course.project.Interfaces.UserService;
@@ -38,12 +39,18 @@ public class RegController {
         userService.createUser(newUser);
         return HttpStatus.ACCEPTED;
     }
+    @PostMapping("/user/updateperson")
+    public HttpStatus UpdatePerson(@RequestBody User user){
+        User newUser = userService.getUserById(user.getUser_id()).get();
+        newUser.setPerson(user.getPerson());
+        personService.updatePerson(newUser.getPerson());
+//        userService.updateUser(newUser);
+        return HttpStatus.OK;
+    }
 
 
     @GetMapping("/users/all")
     public ResponseEntity<List<User>> getAllUsers(){
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
-
-
 }

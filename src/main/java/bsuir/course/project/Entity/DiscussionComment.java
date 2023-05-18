@@ -19,6 +19,7 @@ public class DiscussionComment {
     @JoinColumn(name = "discussion_id")
     private Discussion discussion;
 
+
     public Integer getDiscussion_comment_id() {
         return discussion_comment_id;
     }

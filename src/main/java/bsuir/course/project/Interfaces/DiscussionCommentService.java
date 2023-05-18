@@ -14,4 +14,5 @@ public interface DiscussionCommentService {
     void updateDiscussionComment(DiscussionComment discussionComment);
     List<DiscussionComment> getAllDiscussionComments();
     Optional<DiscussionComment> getDiscussionCommentById(Integer id);
+    List<DiscussionComment> getDiscussionCommentsByDiscussionId(Integer id);
 }

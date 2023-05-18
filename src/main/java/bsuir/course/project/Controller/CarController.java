@@ -4,13 +4,16 @@ package bsuir.course.project.Controller;
 import bsuir.course.project.Entity.Car;
 import bsuir.course.project.Entity.User;
 import bsuir.course.project.Interfaces.CarService;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -46,9 +49,10 @@ public class CarController {
 
 
     @PostMapping("/carcreate")
-    public HttpStatus CarCreate(@RequestBody Car car){
+    public HttpStatus CarCreate(@RequestBody Car car ){
         System.out.println("Принята машина");
         carService.createCar(car);
         return HttpStatus.ACCEPTED;
     }
+
 }

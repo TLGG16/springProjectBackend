@@ -8,6 +8,7 @@ import java.util.Set;
 @Entity
 @Table(name = "car")
 @Data
+
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,14 +18,25 @@ public class Car {
     private String brand;
     private String release_year;
     private String technical_info;
+    private String transmission;
+    private String engine;
+    private String drive;
     private String photo_url;
+    @Lob
+    private byte[] photo;
 
-    @OneToMany(mappedBy = "car",cascade = CascadeType.ALL)
-    private Set<Favourite> favourite_list;
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+
     @OneToMany(mappedBy = "car",cascade = CascadeType.ALL)
     private Set<Advert> advert_list;
 
-    @OneToMany(mappedBy = "car",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
     private Set<Discussion> discussion_list;
 
 
